@@ -3,23 +3,36 @@ import React, { Component } from "react";
 class QuizCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      correctAnswer: ''
+    };
   }
+
+  checkAnswer = (e) => {
+    let guess = e.target.innerText;
+    let answer = this.props.currentQuiz.correctAnswer;
+    if (guess === answer) {
+      this.props.displayCorrect();
+    } else {
+      this.props.displayIncorrect();
+    }
+  };
+
   render() {
     return (
-        <section>
+        <section className="quiz-card">
             <h2 className="question">
-              Which of the following array prototype methods does not modify the original array?
+              {this.props.currentQuiz.question}
             </h2>
             <article className="answer-container">
-              <button className="answer">
-                .splice()
+              <button className="answer" onClick={this.checkAnswer}>
+                {this.props.currentQuiz.answers[0]}
               </button>
-              <button className="answer">
-                .sort()
+              <button className="answer" onClick={this.checkAnswer}>
+                {this.props.currentQuiz.answers[1]}
               </button>
-              <button className="answer">
-                .filter()
+              <button className="answer" onClick={this.checkAnswer}>
+                {this.props.currentQuiz.answers[2]}
               </button>
             </article>
         </section>

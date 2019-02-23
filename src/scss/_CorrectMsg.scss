@@ -1,0 +1,29 @@
+@import './_variables';
+
+.keep-practicing {
+    margin: 10px 0;
+    background-color: $mint;
+    color: $pine;
+    border-radius: 8px;
+    border: none;
+    width: 75%;
+    height: 50px;
+    font-size: 1.25rem;
+    box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
+}
+
+.keep-practicing:hover {
+    background-color: $coral;
+}
+
+.keep-practicing:focus {
+    outline: none;
+}
+
+.correct {
+    color: $coral;
+}
+
+.explanation{
+    color: $pine;
+}
