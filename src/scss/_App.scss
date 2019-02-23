@@ -1,33 +1,41 @@
+@import './_variables';
+
 .App {
+  height: 100%;
+  width: 100%;
   text-align: center;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.content-container {
+  display: grid;
+  grid-template-rows: 2(50%);
+  grid-template-columns: 50%;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: pink;
-  min-height: 100vh;
+.quiz-container {
+  background-color: $platinum;
+  border: solid $pine 2px;
+  border-radius: 5px;
+  margin: 10px;
+};
+
+.results-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 5px 0;
+  margin: 10px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.result-button {
+  background-color: $pine;
+  color: $white;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: solid $pine 2px;
 }

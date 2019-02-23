@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 import './scss/_App.scss';
+import Header from './Header.js';
+import QuizCard from './QuizCard.js';
+import CorrectCount from './CorrectCount.js';
+import Review from './Review.js';
+import StartOver from './StartOver.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            StudyUp
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+        <div className="content-container">
+          <section className = "quiz-container">
+            <article className = "quiz-card">
+              <QuizCard />
+            </article>
+          </section>
+          <section className="results-container">
+              <CorrectCount />
+              <Review />
+              <StartOver />
+          </section>
+        </div>
       </div>
     );
   }
