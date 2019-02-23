@@ -3,7 +3,7 @@ import React from 'react';
 const CorrectCount = props => {
     return (
         <article className="result-correct">
-            You've answered X of 30 questions correctly.
+            <p>You've answered <span className="num-correct"> X </span> of 30 questions correctly.</p>
         </article>
     );
 };

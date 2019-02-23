@@ -4,8 +4,12 @@
     margin: 10px 0;
     border-radius: 5px;
     border: solid $pine 2px;
-    height: 50px;
+    height: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.num-correct {
+    color: $coral;
 }

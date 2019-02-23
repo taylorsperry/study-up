@@ -8,7 +8,7 @@ class Review extends Component {
   render() {
     return (
       <button className="result-button">
-        Review the questions you missed.
+        Review the questions you missed
       </button>
     );
     };

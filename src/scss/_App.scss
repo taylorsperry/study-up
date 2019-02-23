@@ -23,6 +23,8 @@
   border: solid $pine 2px;
   border-radius: 5px;
   margin: 10px;
+  box-shadow: 0px 1px 5px 1px rgba(35, 31, 32, .2);
+
 };
 
 .results-container {
@@ -37,5 +39,15 @@
   color: $white;
   margin: 10px 0;
   border-radius: 5px;
-  border: solid $pine 2px;
+  font-size: 1rem;
+  height: 50px;
+  box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
+}
+
+.result-button:focus {
+  outline: none;
+}
+
+.result-button:hover {
+  background-color: $light-pine;
 }

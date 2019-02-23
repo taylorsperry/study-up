@@ -27,4 +27,13 @@
     width: 75%;
     height: 50px;
     font-size: 1.25rem;
+    box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
+}
+
+.answer:hover {
+    background-color: $coral;
+}
+
+.answer:focus {
+    outline: none;
 }
