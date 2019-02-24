@@ -1,17 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Review extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
+const Review = props => {
     return (
-      <button className="result-button">
+      <button className="result-button" onClick={props.reviewQuizzes}>
         Review the questions you missed
       </button>
     );
-    };
 }
 
 export default Review

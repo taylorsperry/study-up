@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './scss/_App.scss';
 import Header from './Header.js';
 import QuizCard from './QuizCard.js';
-import CorrectMsg from './CorrectMsg';
 import CorrectCount from './CorrectCount.js';
 import Review from './Review.js';
 import StartOver from './StartOver.js';
@@ -14,58 +13,65 @@ class App extends Component {
     super();
     this.state = {
       allQuizzes: mockData.quizzes,
-      currQuiz: mockData.quizzes[7],
-      displayQ: true,
-      correctGuess: true
+      availableQuizzes: mockData.quizzes,
+      currentQuiz: mockData.quizzes[7],
+      reviewQuizzes: [],
+      numCorrect: 0,
     }
   };
 
-  displayCorrect = () => {
+  updateCorrectNum = () => {
     this.setState({
-      displayQ: false,
-      correctGuess: true
-    });
-    console.log(true)
-  }
-
-  displayIncorrect = () => {
-    this.setState({
-      displayQ: false
-    });
-    console.log(false)
-  }
-
-  keepPracticing = () => {
-    this.setState({
-      displayQ: true,
-      correctGuess: false
+      numCorrect: this.state.numCorrect + 1
     })
   }
 
+  addToReview = (quiz) => {
+    let foundQuiz = this.state.availableQuizzes.find(function(el) {
+      return el.id === quiz.id;
+    })
+    let reviewQuizzes = this.state.reviewQuizzes;
+    reviewQuizzes.push(foundQuiz)
+    this.setState({
+      reviewQuizzes: reviewQuizzes
+    })
+    console.log(this.state.reviewQuizzes.length)
+  }
+
+  removeQuiz = (quiz) => {
+    let foundIndex = this.state.availableQuizzes.findIndex(function(el) {
+      return el.id === quiz.id;
+    })
+    let availableQuizzes = this.state.availableQuizzes;
+    availableQuizzes.splice(foundIndex, 1)
+    this.setState({
+      availableQuizzes: availableQuizzes
+    })
+  }
+
+  getIndex = () => {
+    let max = this.state.availableQuizzes.length;
+    return Math.floor(Math.random() * Math.floor(max))
+  }
+
+  newQuiz = () => {
+    console.log(this.state.availableQuizzes)
+    let randomIndex = this.getIndex()
+    this.setState({
+      currentQuiz: this.state.availableQuizzes[randomIndex]
+    })
+  }
+
+  reviewQuizzes = () => {
+    console.log(this.state.reviewQuizzes)
+    let reviewQuizzes = this.state.reviewQuizzes;
+    this.setState({
+      availableQuizzes: reviewQuizzes
+    });
+    this.newQuiz();
+  }
+
   render() {
-    if (this.state.displayQ === false && this.state.correctGuess === true) {
-      console.log('displayQ is false')
-      return (
-        <div className="App">
-        <Header />
-        <div className="content-container">
-          <section className = "quiz-container">
-            <article className = "quiz-card">
-              <CorrectMsg
-                explanation={this.state.currQuiz.explanation} 
-                keepPracticing={this.keepPracticing}
-              />
-            </article>
-          </section>
-          <section className="results-container">
-              <CorrectCount />
-              <Review />
-              <StartOver />
-          </section>
-        </div>
-      </div>
-      )
-    } else {
     return (
       <div className="App">
         <Header />
@@ -73,22 +79,27 @@ class App extends Component {
           <section className = "quiz-container">
             <article className = "quiz-card">
               <QuizCard 
-                currentQuiz={this.state.currQuiz}
-                displayCorrect={this.displayCorrect}
-                displayIncorrect={this.displayIncorrect}
+                currentQuiz={this.state.currentQuiz}
+                newQuiz = {this.newQuiz}
+                removeQuiz = {this.removeQuiz}
+                addToReview={this.addToReview}
+                updateCorrectNum={this.updateCorrectNum}
               />
             </article>
           </section>
           <section className="results-container">
-              <CorrectCount />
-              <Review />
+              <CorrectCount 
+                numCorrect = {this.state.numCorrect}
+              />
+              <Review 
+                reviewQuizzes = {this.reviewQuizzes}
+              />
               <StartOver />
           </section>
         </div>
       </div>
     );
   }
-}
 }
 
 export default App;
