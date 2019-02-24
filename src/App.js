@@ -63,13 +63,13 @@ class App extends Component {
   }
 
   reviewQuizzes = () => {
-    console.log(this.state.reviewQuizzes)
-    let reviewQuizzes = this.state.reviewQuizzes;
-    this.setState({
-      availableQuizzes: reviewQuizzes
-    });
-    this.newQuiz();
-  }
+    // console.log(this.state.reviewQuizzes)
+    // let reviewQuizzes = this.state.reviewQuizzes;
+  //   this.setState({
+  //     availableQuizzes: this.state.reviewQuizzes
+  //   });
+  //   this.newQuiz();
+  // }
 
   render() {
     return (

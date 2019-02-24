@@ -46,6 +46,9 @@ class QuizCard extends Component {
   }
 
   render() {
+
+    //shuffle indices here
+    
     if (this.state.displayQ === false && this.state.correctGuess === true) {
       return (
         <article className = "quiz-card">
