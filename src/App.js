@@ -62,7 +62,7 @@ class App extends Component {
     })
   }
 
-  reviewQuizzes = () => {
+  // reviewQuizzes = () => {
     // console.log(this.state.reviewQuizzes)
     // let reviewQuizzes = this.state.reviewQuizzes;
   //   this.setState({
