@@ -1,0 +1,53 @@
+@import './_variables';
+
+.App {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-container {
+  display: grid;
+  grid-template-rows: 2(50%);
+  grid-template-columns: 50%;
+  justify-content: center;
+}
+
+.quiz-container {
+  background-color: $platinum;
+  border: solid $pine 2px;
+  border-radius: 5px;
+  margin: 30px 10px 0px 10px;
+  box-shadow: 0px 1px 5px 1px rgba(35, 31, 32, .2);
+
+};
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+  margin: 10px;
+}
+
+.result-button {
+  background-color: $pine;
+  color: $white;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 1rem;
+  height: 50px;
+  box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
+}
+
+.result-button:focus {
+  outline: none;
+}
+
+.result-button:hover {
+  background-color: $light-pine;
+}

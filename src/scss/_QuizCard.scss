@@ -1,0 +1,39 @@
+@import './_variables';
+
+.question {
+    margin: 0;
+    color: $pine;
+    font-weight: normal;
+    font-size: 1.25rem;
+    height: 100px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.answer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 200px;
+    padding: 1rem;
+}
+.answer {
+    background-color: $mint;
+    color: $pine;
+    border-radius: 8px;
+    border: none;
+    width: 75%;
+    height: 50px;
+    font-size: 1.25rem;
+    box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
+}
+
+.answer:hover {
+    background-color: $coral;
+}
+
+.answer:focus {
+    outline: none;
+}
