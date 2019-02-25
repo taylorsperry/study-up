@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './scss/_App.scss';
+import Begin from './Begin.js';
 import Header from './Header.js';
 import QuizCard from './QuizCard.js';
 import CorrectCount from './CorrectCount.js';
@@ -14,24 +15,41 @@ class App extends Component {
     this.state = {
       allQuizzes: [],
       availableQuizzes: [],
-      currentQuiz: mockData.quizzes[7],
+      currentQuiz: {},
       reviewQuizzes: [],
       numCorrect: 0,
+      begin: true
     }
   };
 
   componentDidMount() {
-    this.setState({
-      allQuizzes: mockData.quizzes,
-      availableQuizzes: mockData.quizzes,
-      currentQuiz: mockData.quizzes[7]
-    })
-    if (localStorage.hasOwnProperty("reviewArray")) {
-      let reviewQuizzes = JSON.parse(localStorage.getItem("reviewArray"));
-      this.setState({
-        reviewQuizzes: reviewQuizzes
+    fetch("http://memoize-datasets.herokuapp.com/api/v1/TSquizzes")
+      .then(response => response.json())
+      .then(quizzes => {
+        this.setState({
+          allQuizzes: quizzes.TSquizzes,
+          availableQuizzes: quizzes.TSquizzes,
+          currentQuiz: quizzes.TSquizzes[7]
+        })
+        if (localStorage.hasOwnProperty("review-storage")) {
+          let reviewQuizzes = JSON.parse(localStorage.getItem("review-storage"));
+          this.setState({
+            reviewQuizzes: reviewQuizzes
+          })
+        } 
       })
-    } 
+      .catch(error => {
+        throw new Error(error);
+      })
+    
+  }
+
+  toggleDisplay = () => {
+    this.setState({
+      begin: false
+    }, () => {
+      this.newQuiz();
+    })
   }
 
   updateCorrectNum = () => {
@@ -49,7 +67,7 @@ class App extends Component {
     this.setState({
       reviewQuizzes: reviewQuizzes
     })
-    localStorage.setItem("reviewArray", JSON.stringify(this.state.reviewQuizzes))
+    localStorage.setItem("review-storage", JSON.stringify(this.state.reviewQuizzes))
   }
 
   removeQuiz = (quiz) => {
@@ -85,6 +103,20 @@ class App extends Component {
   }
 
   render() {
+    if(this.state.begin === true) {
+      return(
+        <div className="App">
+          <Header />
+          <div className="content-container">
+          <section className="quiz-container">
+            <Begin 
+              toggleDisplay = {this.toggleDisplay}
+            />
+          </section>
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="App">
         <Header />
