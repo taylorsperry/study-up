@@ -35,7 +35,6 @@ class App extends Component {
     this.setState({
       reviewQuizzes: reviewQuizzes
     })
-    console.log(this.state.reviewQuizzes.length)
   }
 
   removeQuiz = (quiz) => {
@@ -55,21 +54,20 @@ class App extends Component {
   }
 
   newQuiz = () => {
-    console.log(this.state.availableQuizzes)
     let randomIndex = this.getIndex()
     this.setState({
       currentQuiz: this.state.availableQuizzes[randomIndex]
     })
   }
 
-  // reviewQuizzes = () => {
-    // console.log(this.state.reviewQuizzes)
-    // let reviewQuizzes = this.state.reviewQuizzes;
-  //   this.setState({
-  //     availableQuizzes: this.state.reviewQuizzes
-  //   });
-  //   this.newQuiz();
-  // }
+  reviewQuizzes = () => {
+    let reviewQuizzes = this.state.reviewQuizzes
+    this.setState({
+      availableQuizzes: reviewQuizzes
+    }, () => {
+      this.newQuiz();
+    });
+  }
 
   render() {
     return (
