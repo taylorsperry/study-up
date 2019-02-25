@@ -12,13 +12,27 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      allQuizzes: mockData.quizzes,
-      availableQuizzes: mockData.quizzes,
+      allQuizzes: [],
+      availableQuizzes: [],
       currentQuiz: mockData.quizzes[7],
       reviewQuizzes: [],
       numCorrect: 0,
     }
   };
+
+  componentDidMount() {
+    this.setState({
+      allQuizzes: mockData.quizzes,
+      availableQuizzes: mockData.quizzes,
+      currentQuiz: mockData.quizzes[7]
+    })
+    if (localStorage.hasOwnProperty("reviewArray")) {
+      let reviewQuizzes = JSON.parse(localStorage.getItem("reviewArray"));
+      this.setState({
+        reviewQuizzes: reviewQuizzes
+      })
+    } 
+  }
 
   updateCorrectNum = () => {
     this.setState({
@@ -35,6 +49,7 @@ class App extends Component {
     this.setState({
       reviewQuizzes: reviewQuizzes
     })
+    localStorage.setItem("reviewArray", JSON.stringify(this.state.reviewQuizzes))
   }
 
   removeQuiz = (quiz) => {
