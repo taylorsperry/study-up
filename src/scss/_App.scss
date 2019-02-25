@@ -26,45 +26,8 @@
   box-shadow: 0px 1px 5px 1px rgba(35, 31, 32, .2);
 };
 
-.results-container {
-  padding: 20px 0px;
-  margin: 30px 10px;
-  background-color: $white;
-  border: solid $onyx 1px;
-  border-radius: 5px;
-  box-shadow: 0px 1px 5px 1px rgba(35, 31, 32, .2);
-}
-
-.button-container {
-  padding: 10px 0px;
-  // text-align: left;
-  // margin-left: 12%;
-}
-
-.result-button {
-  background-color: $coral;
-  color: $white;
-  border: none;
-  font-size: 1rem;
-  box-shadow: 0px .5px .5px .5px rgba(35, 31, 32, .2);
-  border-radius: 5px;
-}
-
-.result-label {
-  color: $onyx;
-}
-
-.result-button:focus {
-  outline: none;
-}
-
-.result-button:hover {
-  background-color: $light-pine;
-}
-
 @media only screen and (max-width: 800px) {
   .content-container {
-    // grid-template-rows: 450px 200px;
     grid-template-columns: 90%;
   }
 }

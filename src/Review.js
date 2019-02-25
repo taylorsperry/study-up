@@ -9,10 +9,7 @@ const Review = props => {
           <CorrectCount 
             numCorrect={props.numCorrect}/>
         </article>
-        <div className="button-container">
-          <button className="result-button">x<i className="fas fa-plus-circle"></i></button>
-          <label className="result-label"> Review the questions you missed</label>
-        </div>
+          <button className="result-button">Review the questions you missed</button>
         <StartOver />
       </section>
     );
