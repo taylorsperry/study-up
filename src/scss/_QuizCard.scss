@@ -2,12 +2,13 @@
 
 .question {
     margin: 0;
-    color: $pine;
+    color: $onyx;
     font-weight: normal;
     font-size: 1.25rem;
-    height: 100px;
+    height: 75px;
     padding: 1rem;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -15,25 +16,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    height: 200px;
-    padding: 1rem;
+    justify-content: space-between;
+    height: 225px;
+    // padding: 1rem;
 }
 .answer {
-    background-color: $mint;
-    color: $pine;
+    background-color: $pine;
+    color: $white;
     border-radius: 8px;
     border: none;
-    width: 75%;
-    height: 50px;
-    font-size: 1.25rem;
+    width: 80%;
+    height: 65px;
+    font-size: 1rem;
     box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
 }
 
 .answer:hover {
-    background-color: $coral;
+    background-color: $light-pine;
 }
 
 .answer:focus {
     outline: none;
+}
+
+@media only screen and (max-width: 520px) {
+    .question {
+        font-size: 1rem;
+    }
+    
+    .answer-container {
+        height: 265px;
+    }
+    
+    .answer {
+        width: 95%;
+        height: 80px;
+        font-size: .9rem;
+    }
 }

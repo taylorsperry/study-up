@@ -13,35 +13,45 @@
 
 .content-container {
   display: grid;
-  grid-template-rows: 2(50%);
-  grid-template-columns: 50%;
+  grid-template-rows: 400px 250px;
+  grid-template-columns: 60%;
   justify-content: center;
 }
 
 .quiz-container {
-  background-color: $platinum;
-  border: solid $pine 2px;
+  background-color: $white;
+  border: solid $onyx 1px;
   border-radius: 5px;
   margin: 30px 10px 0px 10px;
   box-shadow: 0px 1px 5px 1px rgba(35, 31, 32, .2);
-
 };
 
 .results-container {
-  display: flex;
-  flex-direction: column;
-  padding: 5px 0;
-  margin: 10px;
+  padding: 20px 0px;
+  margin: 30px 10px;
+  background-color: $white;
+  border: solid $onyx 1px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px 1px rgba(35, 31, 32, .2);
+}
+
+.button-container {
+  padding: 10px 0px;
+  // text-align: left;
+  // margin-left: 12%;
 }
 
 .result-button {
-  background-color: $pine;
+  background-color: $coral;
   color: $white;
-  margin: 10px 0;
-  border-radius: 5px;
+  border: none;
   font-size: 1rem;
-  height: 50px;
-  box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
+  box-shadow: 0px .5px .5px .5px rgba(35, 31, 32, .2);
+  border-radius: 5px;
+}
+
+.result-label {
+  color: $onyx;
 }
 
 .result-button:focus {
@@ -50,4 +60,17 @@
 
 .result-button:hover {
   background-color: $light-pine;
+}
+
+@media only screen and (max-width: 800px) {
+  .content-container {
+    // grid-template-rows: 450px 200px;
+    grid-template-columns: 90%;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .content-container {
+    grid-template-rows: 450px 200px;
+  }
 }

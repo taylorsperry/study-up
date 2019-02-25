@@ -1,9 +1,24 @@
 @import './_variables';
 
+.correct,
+.incorrect {
+    color: $coral;
+    padding-top: 10%;
+}
+
+.correct-answer {
+    color: $coral;
+}
+
+.explanation {
+    color: $onyx;
+    padding: 0 10%;
+}
+
 .keep-practicing {
     margin: 10px 0;
-    background-color: $mint;
-    color: $pine;
+    background-color: $pine;
+    color: $white;
     border-radius: 8px;
     border: none;
     width: 75%;
@@ -13,17 +28,9 @@
 }
 
 .keep-practicing:hover {
-    background-color: $coral;
+    background-color: $light-pine;
 }
 
 .keep-practicing:focus {
     outline: none;
-}
-
-.correct {
-    color: $coral;
-}
-
-.explanation{
-    color: $pine;
 }

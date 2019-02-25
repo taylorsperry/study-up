@@ -87,14 +87,11 @@ class App extends Component {
               />
             </article>
           </section>
-          <section className="results-container">
-              <CorrectCount 
-                numCorrect = {this.state.numCorrect}
-              />
+          <section>
               <Review 
                 reviewQuizzes = {this.reviewQuizzes}
+                numCorrect = {this.state.numCorrect}
               />
-              <StartOver />
           </section>
         </div>
       </div>
