@@ -3,11 +3,9 @@ import './scss/_App.scss';
 import Begin from './Begin.js';
 import Header from './Header.js';
 import QuizCard from './QuizCard.js';
-import CorrectCount from './CorrectCount.js';
 import Review from './Review.js';
-import StartOver from './StartOver.js';
+import End from './End.js';
 
-import mockData from './mockData.js'
 
 class App extends Component {
   constructor() {
@@ -18,7 +16,9 @@ class App extends Component {
       currentQuiz: {},
       reviewQuizzes: [],
       numCorrect: 0,
-      begin: true
+      begin: true,
+      reviewEnabled: true,
+      endPractice: false
     }
   };
 
@@ -31,12 +31,24 @@ class App extends Component {
           availableQuizzes: quizzes.TSquizzes,
           currentQuiz: quizzes.TSquizzes[7]
         })
+        if (localStorage.hasOwnProperty("available-storage")) {
+          let availableQuizzes = JSON.parse(localStorage.getItem("available-storage"));
+          this.setState({
+            availableQuizzes: availableQuizzes
+          })
+        } 
         if (localStorage.hasOwnProperty("review-storage")) {
           let reviewQuizzes = JSON.parse(localStorage.getItem("review-storage"));
           this.setState({
             reviewQuizzes: reviewQuizzes
           })
         } 
+        if (localStorage.hasOwnProperty("correct-count")) {
+          let numCorrect = JSON.parse(localStorage.getItem("correct-count"));
+          this.setState({
+            numCorrect: numCorrect
+          })
+        }
       })
       .catch(error => {
         throw new Error(error);
@@ -46,9 +58,16 @@ class App extends Component {
 
   toggleDisplay = () => {
     this.setState({
-      begin: false
+      begin: false,
     }, () => {
       this.newQuiz();
+    })
+  }
+
+  toggleReview = () => {
+    let reviewEnabled = !this.state.reviewEnabled;
+    this.setState({
+      reviewEnabled: reviewEnabled
     })
   }
 
@@ -56,6 +75,7 @@ class App extends Component {
     this.setState({
       numCorrect: this.state.numCorrect + 1
     })
+    localStorage.setItem("correct-count", JSON.stringify(this.state.numCorrect))
   }
 
   addToReview = (quiz) => {
@@ -65,7 +85,7 @@ class App extends Component {
     let reviewQuizzes = this.state.reviewQuizzes;
     reviewQuizzes.push(foundQuiz)
     this.setState({
-      reviewQuizzes: reviewQuizzes
+      reviewQuizzes: reviewQuizzes,
     })
     localStorage.setItem("review-storage", JSON.stringify(this.state.reviewQuizzes))
   }
@@ -79,6 +99,7 @@ class App extends Component {
     this.setState({
       availableQuizzes: availableQuizzes
     })
+    localStorage.setItem("available-storage", JSON.stringify(this.state.availableQuizzes))
   }
 
   getIndex = () => {
@@ -87,24 +108,43 @@ class App extends Component {
   }
 
   newQuiz = () => {
+    if(this.state.availableQuizzes.length <= 0) {
+      this.endPractice();
+    } else {
     let randomIndex = this.getIndex()
     this.setState({
       currentQuiz: this.state.availableQuizzes[randomIndex]
     })
   }
+  }
 
   reviewQuizzes = () => {
+    if(this.state.reviewEnabled === true) {
     let reviewQuizzes = this.state.reviewQuizzes
     this.setState({
       availableQuizzes: reviewQuizzes
     }, () => {
       this.newQuiz();
     });
+  }}
+
+  endPractice = () => {
+    this.setState({
+      endPractice: true
+    })
+  }
+
+  reset = () => {
+    this.setState({
+      begin: true
+    })
+    localStorage.clear();
+    this.componentDidMount();
   }
 
   render() {
     if(this.state.begin === true) {
-      return(
+      return (
         <div className="App">
           <Header />
           <div className="content-container">
@@ -116,7 +156,21 @@ class App extends Component {
           </div>
         </div>
       )
-    }
+    } 
+    if(this.state.endPractice === true) {
+      return (
+        <div className="App">
+          <Header />
+          <div className="content-container">
+          <section className="quiz-container">
+            <End 
+              reset={this.reset}
+            />
+          </section>
+          </div>
+        </div>
+      )
+    } else {
     return (
       <div className="App">
         <Header />
@@ -124,6 +178,7 @@ class App extends Component {
           <section className = "quiz-container">
             <article className = "quiz-card">
               <QuizCard 
+                toggleReview={this.toggleReview}
                 currentQuiz={this.state.currentQuiz}
                 newQuiz = {this.newQuiz}
                 removeQuiz = {this.removeQuiz}
@@ -136,12 +191,15 @@ class App extends Component {
               <Review 
                 reviewQuizzes = {this.reviewQuizzes}
                 numCorrect = {this.state.numCorrect}
+                reviewLength = {this.state.reviewQuizzes.length}
+                reset = {this.reset}
               />
           </section>
         </div>
       </div>
     );
   }
+}
 }
 
 export default App;

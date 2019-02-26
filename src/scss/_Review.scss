@@ -1,36 +1,45 @@
-// @import './_variables';
+.result-correct {
+    margin: 0;
+    padding: 20px 0px;
+    color: $onyx;
+    font-weight: normal;
+}
 
-// .correct,
-// .incorrect {
-//     color: $coral;
-//     padding-top: 10%;
-// }
+.num-correct {
+    color: $coral;
+    font-weight: bold;
+}
 
-// .correct-answer {
-//     color: $coral;
-// }
+.results-container {
+    padding: 20px 0px 15px 0px;
+    margin: 30px 10px;
+    background-color: $white;
+    border: solid $onyx 1px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 1px rgba(35, 31, 32, .2);
+}
+  
+.result-button {
+    background-color: $white;
+    color: $coral;
+    border: solid $coral 1px;
+    font-size: 1rem;
+    box-shadow: 0px .5px .5px .5px rgba(35, 31, 32, .2);
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px 0px;
+    margin: 15px 0px;
+}
+  
+.result-button:focus {
+    outline: none;
+}
+  
+.result-button:hover {
+    background-color: $platinum;
+}
 
-// .explanation {
-//     color: $onyx;
-//     padding: 0 10%;
-// }
-
-// .keep-practicing {
-//     margin: 10px 0;
-//     background-color: $pine;
-//     color: $white;
-//     border-radius: 8px;
-//     border: none;
-//     width: 75%;
-//     height: 50px;
-//     font-size: 1.25rem;
-//     box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
-// }
-
-// .keep-practicing:hover {
-//     background-color: $light-pine;
-// }
-
-// .keep-practicing:focus {
-//     outline: none;
-// }
+button.disabled {
+    border: solid $platinum 2px;
+    color: $platinum
+}

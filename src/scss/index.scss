@@ -1,13 +1,9 @@
 @import 'variables';
 @import 'App';
 @import 'Header';
-@import 'Begin';
 @import 'CorrectMsg';
-@import 'IncorrectMsg';
 @import 'QuizCard';
-@import 'CorrectCount';
 @import 'Review';
-@import 'StartOver';
 
 body {
     background: $white;

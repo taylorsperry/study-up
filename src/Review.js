@@ -9,8 +9,10 @@ const Review = props => {
           <CorrectCount 
             numCorrect={props.numCorrect}/>
         </article>
-          <button className="result-button" onClick={props.reviewQuizzes}>Review the questions you missed</button>
-        <StartOver />
+          <button disabled={props.reviewLength <= 0} className="result-button" onClick={props.reviewQuizzes}>Review the questions you missed</button>
+        <StartOver 
+          reset={props.reset}
+        />
       </section>
     );
 }

@@ -27,13 +27,15 @@ class QuizCard extends Component {
       correctGuess: true,
     })
     this.props.updateCorrectNum();
+    this.props.toggleReview();
   }
 
   displayIncorrect = () => {
-    this.props.addToReview(this.props.currentQuiz)
     this.setState({
       displayQ: false
     })
+    this.props.addToReview(this.props.currentQuiz);
+    this.props.toggleReview();
   }
 
   keepPracticing = (e) => {
@@ -41,8 +43,9 @@ class QuizCard extends Component {
       displayQ: true,
       correctGuess: false
     })
-    this.props.removeQuiz(this.props.currentQuiz)
-    this.props.newQuiz()
+    this.props.removeQuiz(this.props.currentQuiz);
+    this.props.toggleReview();
+    this.props.newQuiz();
   }
 
   render() {
