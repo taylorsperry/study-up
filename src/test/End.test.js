@@ -1,15 +1,12 @@
 import React from "react";
-import CorrectCount from "../CorrectCount";
+import End from "../End";
 import { shallow } from "enzyme"
 
-describe("CorrectCount", () => {
+describe("End", () => {
   let wrapper;
-  let numCorrect = 7;
 
   beforeEach(() => {
-    wrapper = shallow(<CorrectCount 
-        numCorrect={numCorrect} 
-    />)
+    wrapper = shallow(<End />)
   })
 
   it("should match snapshot when all data is passed correctly", () => {

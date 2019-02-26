@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuizCard should match snapshot when all data is passed correctly 1`] = `
+<section
+  className="quiz-card"
+>
+  <h2
+    className="question"
+  >
+    If the array 'greeting' has a value of ['Hello', 'World'], and you wanted to return the string 'Hello World', which of the following would you call?
+  </h2>
+  <article
+    className="answer-container"
+  >
+    <button
+      className="answer"
+      onClick={[Function]}
+    >
+      greeting.join()
+    </button>
+    <button
+      className="answer"
+      onClick={[Function]}
+    >
+      greeting.concat()
+    </button>
+    <button
+      className="answer"
+      onClick={[Function]}
+    >
+      greeting.join(' ')
+    </button>
+  </article>
+</section>
+`;

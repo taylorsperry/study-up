@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Begin should match snapshot when all data is passed correctly 1`] = `
+<section
+  className="quiz-card"
+>
+  <h2
+    className="correct"
+  >
+    Welcome!
+  </h2>
+  <p
+    className="explanation"
+  >
+    StudyUp is a tool for practicing JavaScript fundamentals.
+  </p>
+  <button
+    className="keep-practicing"
+  >
+    Let's get started
+  </button>
+</section>
+`;

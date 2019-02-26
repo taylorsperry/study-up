@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Review should match snapshot when all data is passed correctly 1`] = `
+<section
+  className="results-container"
+>
+  <article>
+    <CorrectCount
+      numCorrect={7}
+    />
+  </article>
+  <button
+    className="result-button"
+    disabled={false}
+    onClick={
+      Array [
+        Object {
+          "answers": Array [
+            ".splice()",
+            ".sort()",
+            ".filter()",
+          ],
+          "correctAnswer": ".filter()",
+          "explanation": ".sort() rearranges the order of the array. .filter() returns a new array based on the criteria it’s passed.",
+          "id": 4,
+          "question": "Which of the following array prototype methods does not modify the original array?",
+        },
+        Object {
+          "answers": Array [
+            ".sort() will return a copy of the original array",
+            ".sort() will return undefined",
+            ".sort() will rearrange the elements according to their unicode code point values",
+          ],
+          "correctAnswer": ".sort() will rearrange the elements according to their unicode code point values",
+          "explanation": ".sort() can take a compare function, which itself takes two elements to compare.",
+          "id": 5,
+          "question": "What happens if you don’t pass two elements for comparison through the .sort() method?",
+        },
+      ]
+    }
+  >
+    Review the questions you missed
+  </button>
+  <StartOver
+    reset={[MockFunction]}
+  />
+</section>
+`;

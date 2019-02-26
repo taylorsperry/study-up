@@ -5,7 +5,7 @@ const End = props => {
        <section className="quiz-card">
         <h2 className="correct">Great job!</h2>
         <p className="explanation">You've finished practicing JavaScript fundamentals ... for now.</p>
-        <button className="keep-practicing" onClick={props.reset}>Review again</button>
+        <button className="keep-practicing" onClick={props.newPractice}>Review again</button>
        </section> 
     )
 }

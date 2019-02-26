@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartOver should match snapshot when all data is passed correctly 1`] = `
+<button
+  className="result-button"
+>
+  Start Over
+</button>
+`;

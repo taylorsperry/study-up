@@ -29,7 +29,8 @@ class App extends Component {
         this.setState({
           allQuizzes: quizzes.TSquizzes,
           availableQuizzes: quizzes.TSquizzes,
-          currentQuiz: quizzes.TSquizzes[7]
+          currentQuiz: quizzes.TSquizzes[7],
+          numCorrect: 0
         })
         if (localStorage.hasOwnProperty("available-storage")) {
           let availableQuizzes = JSON.parse(localStorage.getItem("available-storage"));
@@ -53,7 +54,6 @@ class App extends Component {
       .catch(error => {
         throw new Error(error);
       })
-    
   }
 
   toggleDisplay = () => {
@@ -74,8 +74,9 @@ class App extends Component {
   updateCorrectNum = () => {
     this.setState({
       numCorrect: this.state.numCorrect + 1
+    }, () => {
+      localStorage.setItem("correct-count", JSON.stringify(this.state.numCorrect));
     })
-    localStorage.setItem("correct-count", JSON.stringify(this.state.numCorrect))
   }
 
   addToReview = (quiz) => {
@@ -142,6 +143,15 @@ class App extends Component {
     this.componentDidMount();
   }
 
+  newPractice = () => {
+    this.setState({
+      begin: true,
+      endPractice: false
+    })
+    localStorage.clear();
+    this.componentDidMount();
+  }
+
   render() {
     if(this.state.begin === true) {
       return (
@@ -164,7 +174,7 @@ class App extends Component {
           <div className="content-container">
           <section className="quiz-container">
             <End 
-              reset={this.reset}
+              newPractice={this.newPractice}
             />
           </section>
           </div>
