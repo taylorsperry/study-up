@@ -8,11 +8,9 @@ StudyUp is a tool for users to practice javascript fundamentals through a series
 
 ### Screenshots
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+<img width="693" alt="begin" src="https://user-images.githubusercontent.com/43555476/53501375-45e31d80-3a69-11e9-9fd7-801112d3dc00.png">
+<img width="693" alt="question" src="https://user-images.githubusercontent.com/43555476/53501378-47ace100-3a69-11e9-848b-ca7b1af7e70b.png">
+<img width="694" alt="correct response" src="https://user-images.githubusercontent.com/43555476/53501382-4976a480-3a69-11e9-8d0f-c89ea5cf3b50.png">Runs the app in the development mode.<br>
 
 ### Setup
 
