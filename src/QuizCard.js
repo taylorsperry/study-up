@@ -47,11 +47,9 @@ class QuizCard extends Component {
     this.props.toggleReview();
     this.props.newQuiz();
   }
-
+  
   render() {
 
-    //shuffle indices here
-    
     if (this.state.displayQ === false && this.state.correctGuess === true) {
       return (
         <article className = "quiz-card">
@@ -79,14 +77,14 @@ class QuizCard extends Component {
               {this.props.currentQuiz.question}
             </h2>
             <article className="answer-container">
-              <button className="answer" onClick={this.checkAnswer}>
-                {this.props.currentQuiz.answers[0]}
+              <button className="answer" id="a1" onClick={this.checkAnswer}>
+                {this.props.shuffledAnswers[0]}
               </button>
-              <button className="answer" onClick={this.checkAnswer}>
-                {this.props.currentQuiz.answers[1]}
+              <button className="answer" id="a2" onClick={this.checkAnswer}>
+                {this.props.shuffledAnswers[1]}
               </button>
-              <button className="answer" onClick={this.checkAnswer}>
-                {this.props.currentQuiz.answers[2]}
+              <button className="answer" id="a3" onClick={this.checkAnswer}>
+                {this.props.shuffledAnswers[2]}
               </button>
             </article>
         </section>

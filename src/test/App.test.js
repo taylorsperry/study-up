@@ -57,10 +57,6 @@ describe("App", () => {
     expect(wrapper.state("reviewQuizzes")).toHaveLength(1);
   })
 
-  it.skip("should save reviewQuizzes to local storage", () => {
-
-  })
-
   it.skip("should update the state of availableQuizzes when removeQuiz is called", () => {
     let availableQuizzes = [{
       "id": 6,
@@ -105,5 +101,4 @@ describe("App", () => {
     expect(wrapper.state("endPractice")).toEqual(false);
     expect(wrapper.state("begin")).toEqual(true)
   })
-
 })

@@ -11,8 +11,16 @@ describe("QuizCard", () => {
     "correctAnswer": "greeting.join(' ')",
     "explanation": "Without a separator argument, .join() will return a string with the array’s elements separated by commas; .concat() joins the prototype on which its called with the arguments its passed."
   };
-
+  let quiz = {
+    "id": 8,
+    "question": "What argument does the .filter() method require?", 
+    "answers": ["A current element", "None", "A callback function"],
+    "correctAnswer": "A callback function",
+    "explanation": "Any elements that meet the criteria of the callback function will be returned to the new array. If no elements match the criteria, .filter() will return an empty array."
+  }
+  
   let mockFunc = jest.fn();
+  const checkAnswer = jest.fn();
 
   beforeEach(() => {
     wrapper = shallow(
@@ -29,4 +37,24 @@ describe("QuizCard", () => {
   it("should match snapshot when all data is passed correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it("should have a proper default state", () => {
+    expect(wrapper.state()).toEqual({
+      displayQ: true,
+      correctGuess: false
+    })
+  })
+
+  it("should call checkAnswer when an answer button is clicked", () => {
+    wrapper.find("#a1").simulate("click", {target: { e: { innerText: "A current element"} }});
+    expect(checkAnswer).toHaveBeenCalled()
+  })
+
+  it("should call displayCorrect if the correct answer is clicked", () => {
+    
+  })
+
+  it("should call displayIncorrect if an incorrect answer is clicked", () => {
+
+  })
 })

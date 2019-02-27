@@ -14,6 +14,7 @@ class App extends Component {
       allQuizzes: [],
       availableQuizzes: [],
       currentQuiz: {},
+      shuffledAnswers: [],
       reviewQuizzes: [],
       numCorrect: 0,
       begin: true,
@@ -103,8 +104,13 @@ class App extends Component {
     localStorage.setItem("available-storage", JSON.stringify(this.state.availableQuizzes))
   }
 
-  getIndex = () => {
-    let max = this.state.availableQuizzes.length;
+  getIndex = (length) => {
+    if(length === "all") {
+      var max = this.state.availableQuizzes.length;
+    }
+    if(length === "answers") {
+      max = 3
+    }
     return Math.floor(Math.random() * Math.floor(max))
   }
 
@@ -112,11 +118,24 @@ class App extends Component {
     if(this.state.availableQuizzes.length <= 0) {
       this.endPractice();
     } else {
-    let randomIndex = this.getIndex()
+    let randomIndex = this.getIndex("all");
     this.setState({
       currentQuiz: this.state.availableQuizzes[randomIndex]
+    }, () => {
+      this.shuffleAnswers();
     })
   }
+  }
+
+  shuffleAnswers = () => {
+    let index = this.getIndex("answers");
+    let answers = this.state.currentQuiz.answers;
+    let slipperyAnswer = answers[index];
+    answers.splice(index, 1);
+    answers.unshift(slipperyAnswer);
+    this.setState({
+      shuffledAnswers: answers
+    })
   }
 
   reviewQuizzes = () => {
@@ -194,6 +213,7 @@ class App extends Component {
                 removeQuiz = {this.removeQuiz}
                 addToReview={this.addToReview}
                 updateCorrectNum={this.updateCorrectNum}
+                shuffledAnswers={this.state.shuffledAnswers}
               />
             </article>
           </section>

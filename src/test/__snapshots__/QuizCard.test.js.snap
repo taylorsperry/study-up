@@ -14,18 +14,21 @@ exports[`QuizCard should match snapshot when all data is passed correctly 1`] = 
   >
     <button
       className="answer"
+      id="a1"
       onClick={[Function]}
     >
       greeting.join()
     </button>
     <button
       className="answer"
+      id="a2"
       onClick={[Function]}
     >
       greeting.concat()
     </button>
     <button
       className="answer"
+      id="a3"
       onClick={[Function]}
     >
       greeting.join(' ')
