@@ -1,8 +1,8 @@
 import React from "react";
-import CorrectMsg from "../CorrectMsg";
+import IncorrectMsg from "../IncorrectMsg";
 import { shallow } from "enzyme"
 
-describe("CorrectMsg", () => {
+describe("IncorrectMsg", () => {
   let wrapper;
   let currentQuiz = {
     "id": 3,
@@ -13,11 +13,11 @@ describe("CorrectMsg", () => {
   }
 
   beforeEach(() => {
-    wrapper = shallow(
-    <CorrectMsg 
-        explanation={currentQuiz.explanation}
-    />
-    );
+    wrapper = shallow(<IncorrectMsg 
+        correctAnswer={currentQuiz.correctAnswer}
+        // keepPracticing={this.keepPracticing}
+        // removeQuiz={this.props.removeQuiz}
+    />)
   })
 
   it("should match snapshot when all data is passed correctly", () => {

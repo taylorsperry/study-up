@@ -1,16 +1,12 @@
 @import 'variables';
 @import 'App';
 @import 'Header';
-@import 'Begin';
 @import 'CorrectMsg';
-@import 'IncorrectMsg';
 @import 'QuizCard';
-@import 'CorrectCount';
 @import 'Review';
-@import 'StartOver';
 
 body {
-    background: $white;
+    background: $base;
     background: url(../dust_scratches.png);
     margin: 0;
     padding: 0;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CorrectCount should match snapshot when all data is passed correctly 1`] = `
+<h3
+  className="result-correct"
+>
+  You've answered 
+  <span
+    className="num-correct"
+  >
+    7
+  </span>
+   of 30 questions correctly.
+</h3>
+`;

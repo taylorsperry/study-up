@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IncorrectMsg should match snapshot when all data is passed correctly 1`] = `
+<section
+  className="quiz-card"
+>
+  <h2
+    className="incorrect"
+  >
+    That's incorrect
+  </h2>
+  <p
+    className="explanation"
+  >
+    The correct answer was 
+    <span
+      className="correct-answer"
+    >
+      greeting.join(' ')
+    </span>
+  </p>
+  <button
+    className="keep-practicing"
+  >
+    Keep Practicing
+  </button>
+</section>
+`;

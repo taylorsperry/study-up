@@ -1,53 +1,42 @@
 @import './_variables';
 
+
+//Styles for overall layout
+
 .App {
   height: 100%;
   width: 100%;
   text-align: center;
   display: grid;
-  grid-template-rows: 100px 1fr;
   grid-template-columns: 100%;
+  grid-template-rows: 100px;
   justify-content: center;
   align-items: center;
 }
 
 .content-container {
   display: grid;
-  grid-template-rows: 2(50%);
-  grid-template-columns: 50%;
+  grid-template-rows: 400px 250px;
+  grid-template-columns: 60%;
   justify-content: center;
 }
 
 .quiz-container {
-  background-color: $platinum;
-  border: solid $pine 2px;
+  background-color: $base;
+  border: solid $outline 1px;
   border-radius: 5px;
   margin: 30px 10px 0px 10px;
   box-shadow: 0px 1px 5px 1px rgba(35, 31, 32, .2);
-
 };
 
-.results-container {
-  display: flex;
-  flex-direction: column;
-  padding: 5px 0;
-  margin: 10px;
+@media only screen and (max-width: 800px) {
+  .content-container {
+    grid-template-columns: 90%;
+  }
 }
 
-.result-button {
-  background-color: $pine;
-  color: $white;
-  margin: 10px 0;
-  border-radius: 5px;
-  font-size: 1rem;
-  height: 50px;
-  box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
-}
-
-.result-button:focus {
-  outline: none;
-}
-
-.result-button:hover {
-  background-color: $light-pine;
+@media only screen and (max-width: 520px) {
+  .content-container {
+    grid-template-rows: 450px 200px;
+  }
 }

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot when all data is passed correctly 1`] = `
+<section
+  className="header"
+>
+  <h1
+    className="logo"
+  >
+    StudyUp
+  </h1>
+</section>
+`;

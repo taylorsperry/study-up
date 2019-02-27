@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CorrectMsg should match snapshot when all data is passed correctly 1`] = `
+<section
+  className="quiz-card"
+>
+  <h2
+    className="correct"
+  >
+    That's right!
+  </h2>
+  <p
+    className="explanation"
+  >
+    Without a separator argument, .join() will return a string with the array’s elements separated by commas; .concat() joins the prototype on which its called with the arguments its passed.
+  </p>
+  <button
+    className="keep-practicing"
+  >
+    Keep Practicing
+  </button>
+</section>
+`;

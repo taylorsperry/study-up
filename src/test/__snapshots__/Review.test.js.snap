@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Review should match snapshot when all data is passed correctly 1`] = `
+<section
+  className="results-container"
+>
+  <article>
+    <CorrectCount
+      numCorrect={7}
+    />
+  </article>
+  <button
+    className="result-button"
+    disabled={false}
+    onClick={[MockFunction]}
+  >
+    Review the questions you missed
+  </button>
+  <StartOver
+    reset={[MockFunction]}
+  />
+</section>
+`;

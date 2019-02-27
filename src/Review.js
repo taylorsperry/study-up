@@ -1,10 +1,19 @@
 import React from "react";
+import CorrectCount from './CorrectCount.js'
+import StartOver from './StartOver.js'
 
 const Review = props => {
     return (
-      <button className="result-button" onClick={props.reviewQuizzes}>
-        Review the questions you missed
-      </button>
+      <section className="results-container">
+        <article>
+          <CorrectCount 
+            numCorrect={props.numCorrect}/>
+        </article>
+          <button disabled={props.reviewLength <= 0} className="result-button" onClick={props.beginReview}>Review the questions you missed</button>
+        <StartOver 
+          reset={props.reset}
+        />
+      </section>
     );
 }
 
