@@ -29,7 +29,8 @@ StudyUp is a tool for users to practice javascript fundamentals through a series
 
 - Refactor React components to better adhere to SRP (addressed further in issues)
 - Allow user to return to available quizzes after a review session has begun (addressed further in issues)
-- Style buttons to indicate that they've been enabled/disabled
+- Style buttons to indicate that they've been enabled/disable
+- Add different styling for review session
 
 ### Orginal Assignment 
 
