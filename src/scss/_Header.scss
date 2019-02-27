@@ -1,8 +1,10 @@
 @import './_variables.scss';
 
+//Styles for header
+
 .header {
-    background-color: $white;
-    color: $coral;
+    background-color: $base;
+    color: $accent;
     margin: 0;
     padding: 0;
     height: 100%;

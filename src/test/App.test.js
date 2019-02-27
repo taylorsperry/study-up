@@ -12,7 +12,7 @@ describe("App", () => {
     "explanation": "Whether .includes() is called on an array or a string, it takes an argument and will return a boolean."
   }
 
-  let shuffledAnswers = jest.fn();
+  let shuffleAnswers = jest.fn();
   let newQuiz = jest.fn();
 
   beforeEach(() => {
@@ -82,8 +82,6 @@ describe("App", () => {
   })
 
   it("should update the state of currentQuiz when newQuiz is called", () => {
-    const endPractice = jest.fn();
-
     wrapper.setState({
         "id": 6,
         "question": "On which of the following prototypes can .includes() be called?",

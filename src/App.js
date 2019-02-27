@@ -31,7 +31,7 @@ class App extends Component {
         this.setState({
           allQuizzes: quizzes.TSquizzes,
           availableQuizzes: quizzes.TSquizzes,
-          currentQuiz: quizzes.TSquizzes[7],
+          currentQuiz: {},
           numCorrect: 0
         })
         if (localStorage.hasOwnProperty("available-storage")) {
@@ -63,6 +63,40 @@ class App extends Component {
       begin: false,
     }, () => {
       this.newQuiz();
+    })
+  }
+
+  getIndex = (length) => {
+    if(length === "all") {
+      var max = this.state.availableQuizzes.length;
+    }
+    if(length === "answers") {
+      max = 3
+    }
+    return Math.floor(Math.random() * Math.floor(max))
+  }
+
+  newQuiz = () => {
+    if(this.state.availableQuizzes.length <= 0) {
+      this.endPractice();
+    } else {
+    let randomIndex = this.getIndex("all");
+    this.setState({
+      currentQuiz: this.state.availableQuizzes[randomIndex]
+    }, () => {
+      this.shuffleAnswers();
+    })
+  }
+  }
+
+  shuffleAnswers = () => {
+    let index = this.getIndex("answers");
+    let answers = this.state.currentQuiz.answers;
+    let slipperyAnswer = answers[index];
+    answers.splice(index, 1);
+    answers.unshift(slipperyAnswer);
+    this.setState({
+      shuffledAnswers: answers
     })
   }
 
@@ -103,40 +137,6 @@ class App extends Component {
       availableQuizzes: availableQuizzes
     })
     localStorage.setItem("available-storage", JSON.stringify(this.state.availableQuizzes))
-  }
-
-  getIndex = (length) => {
-    if(length === "all") {
-      var max = this.state.availableQuizzes.length;
-    }
-    if(length === "answers") {
-      max = 3
-    }
-    return Math.floor(Math.random() * Math.floor(max))
-  }
-
-  newQuiz = () => {
-    if(this.state.availableQuizzes.length <= 0) {
-      this.endPractice();
-    } else {
-    let randomIndex = this.getIndex("all");
-    this.setState({
-      currentQuiz: this.state.availableQuizzes[randomIndex]
-    }, () => {
-      this.shuffleAnswers();
-    })
-  }
-  }
-
-  shuffleAnswers = () => {
-    let index = this.getIndex("answers");
-    let answers = this.state.currentQuiz.answers;
-    let slipperyAnswer = answers[index];
-    answers.splice(index, 1);
-    answers.unshift(slipperyAnswer);
-    this.setState({
-      shuffledAnswers: answers
-    })
   }
 
   beginReview = () => {
