@@ -1,8 +1,10 @@
 @import './_variables';
 
+//Styles for QuizCard questions and answers
+
 .question {
     margin: 0;
-    color: $onyx;
+    color: $outline;
     font-weight: normal;
     font-size: 1.25rem;
     height: 75px;
@@ -18,21 +20,23 @@
     align-items: center;
     justify-content: space-between;
     height: 225px;
-    // padding: 1rem;
 }
+
 .answer {
-    background-color: $pine;
-    color: $white;
+    background-color: $btn;
+    color: $base;
     border-radius: 8px;
     border: none;
     width: 80%;
     height: 65px;
     font-size: 1rem;
-    box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
+    box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2);
+    cursor: pointer;
+    transition: all .3s ease;
 }
 
 .answer:hover {
-    background-color: $light-pine;
+    background-color: $btn-hover;
 }
 
 .answer:focus {

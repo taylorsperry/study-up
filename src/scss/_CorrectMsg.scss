@@ -1,34 +1,38 @@
 @import './_variables';
 
+//Styles for correct/incorrect messages and button for "Keep Practicing", "Let's Begin", and "Review again"
+
 .correct,
 .incorrect {
-    color: $coral;
+    color: $accent;
     padding-top: 10%;
 }
 
 .correct-answer {
-    color: $coral;
+    color: $accent;
 }
 
 .explanation {
-    color: $onyx;
+    color: $outline;
     padding: 0 10%;
 }
 
 .keep-practicing {
     margin: 10px 0;
-    background-color: $pine;
-    color: $white;
+    background-color: $btn;
+    color: $base;
     border-radius: 8px;
     border: none;
     width: 75%;
     height: 50px;
     font-size: 1.25rem;
-    box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2)
+    box-shadow: 0px 1px 1px 1px rgba(35, 31, 32, .2);
+    cursor: pointer;
+    transition: all .3s ease;
 }
 
 .keep-practicing:hover {
-    background-color: $light-pine;
+    background-color: $btn-hover;
 }
 
 .keep-practicing:focus {
