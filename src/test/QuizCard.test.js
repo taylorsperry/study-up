@@ -18,9 +18,9 @@ describe("QuizCard", () => {
     "correctAnswer": "A callback function",
     "explanation": "Any elements that meet the criteria of the callback function will be returned to the new array. If no elements match the criteria, .filter() will return an empty array."
   }
-  
+  let shuffledAnswers = ["A current element", "None", "A callback function"]
   let mockFunc = jest.fn();
-  const checkAnswer = jest.fn();
+  
 
   beforeEach(() => {
     wrapper = shallow(
@@ -31,6 +31,7 @@ describe("QuizCard", () => {
             removeQuiz={mockFunc}
             addToReview={mockFunc}
             updateCorrectNum ={mockFunc}
+            shuffledAnswers={shuffledAnswers}
         />)
   })
 
@@ -46,15 +47,16 @@ describe("QuizCard", () => {
   })
 
   it("should call checkAnswer when an answer button is clicked", () => {
-    wrapper.find("#a1").simulate("click", {target: { e: { innerText: "A current element"} }});
-    expect(checkAnswer).toHaveBeenCalled()
+    let spy = jest.spyOn(wrapper.instance(), 'checkAnswer');
+    wrapper.find("#a1").simulate("click");
+    expect(spy).toHaveBeenCalled()
   })
 
-  it("should call displayCorrect if the correct answer is clicked", () => {
+  it.skip("should call displayCorrect if the correct answer is clicked", () => {
     
   })
 
-  it("should call displayIncorrect if an incorrect answer is clicked", () => {
+  it.skip("should call displayIncorrect if an incorrect answer is clicked", () => {
 
   })
 })

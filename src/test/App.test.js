@@ -12,6 +12,9 @@ describe("App", () => {
     "explanation": "Whether .includes() is called on an array or a string, it takes an argument and will return a boolean."
   }
 
+  let shuffledAnswers = jest.fn();
+  let newQuiz = jest.fn();
+
   beforeEach(() => {
     wrapper = shallow(<App />)
   })
@@ -25,6 +28,7 @@ describe("App", () => {
       allQuizzes: [],
       availableQuizzes: [],
       currentQuiz: {},
+      shuffledAnswers: [],
       reviewQuizzes: [],
       numCorrect: 0,
       begin: true,
@@ -57,31 +61,59 @@ describe("App", () => {
     expect(wrapper.state("reviewQuizzes")).toHaveLength(1);
   })
 
-  it.skip("should update the state of availableQuizzes when removeQuiz is called", () => {
-    let availableQuizzes = [{
+  it("should update the state of availableQuizzes when removeQuiz is called", () => {
+    wrapper.setState({
+      availableQuizzes: [{
       "id": 6,
       "question": "On which of the following prototypes can .includes() be called?",
       "answers": [ "Arrays", "Strings", "Arrays and Strings"],
       "correctAnswer": "Arrays and Strings",
       "explanation": "Whether .includes() is called on an array or a string, it takes an argument and will return a boolean."
-    }];
+      }]
+    });
     expect(wrapper.state("availableQuizzes")).toHaveLength(1);
     wrapper.instance().removeQuiz(quiz)
     expect(wrapper.state("availableQuizzes")).toHaveLength(0);
   })
 
   it("should generate a random index number when getIndex is called", () => {
-    let max = 10;
-    let num = wrapper.instance().getIndex();
-    expect(num).toBeLessThanOrEqual(10)
+    let num = wrapper.instance().getIndex("answers");
+    expect(num).toBeLessThanOrEqual(3)
   })
 
-  it.skip("should update the state of currentQuiz when newQuiz is called", () => {
-    expect(wrapper.state("currentQuiz")).toEqual({})
+  it("should update the state of currentQuiz when newQuiz is called", () => {
+    const endPractice = jest.fn();
+
+    wrapper.setState({
+        "id": 6,
+        "question": "On which of the following prototypes can .includes() be called?",
+        "answers": [ "Arrays", "Strings", "Arrays and Strings"],
+        "correctAnswer": "Arrays and Strings",
+        "explanation": "Whether .includes() is called on an array or a string, it takes an argument and will return a boolean."
+    });
+    wrapper.instance().newQuiz()
+    expect(wrapper.state("currentQuiz.id")).not.toEqual(6)
   })
 
-  it.skip("should update the state of availableQuizzes when reviewQuizzes is called", () => {
-
+  it("should update the state of availableQuizzes when reviewQuizzes is called", () => {
+    wrapper.setState({
+      availableQuizzes: [{
+      "id": 6,
+      "question": "On which of the following prototypes can .includes() be called?",
+      "answers": [ "Arrays", "Strings", "Arrays and Strings"],
+      "correctAnswer": "Arrays and Strings",
+      "explanation": "Whether .includes() is called on an array or a string, it takes an argument and will return a boolean."
+      }],
+      reviewQuizzes: [ {
+        "id": 3,
+        "question": "If the array 'greeting' has a value of ['Hello', 'World'], and you wanted to return the string 'Hello World', which of the following would you call?",
+        "answers": ["greeting.join()", "greeting.concat()", "greeting.join(' ')"],
+        "correctAnswer": "greeting.join(' ')",
+        "explanation": "Without a separator argument, .join() will return a string with the array’s elements separated by commas; .concat() joins the prototype on which its called with the arguments its passed."
+      }]
+    });
+    wrapper.instance().reviewQuizzes();
+    expect(wrapper.state("availableQuizzes")).toEqual(wrapper.state("reviewQuizzes"))
   })
 
   it("should update the state of endPractice when endPratice is called", () => {
@@ -91,13 +123,14 @@ describe("App", () => {
   })
 
   it("should update the state of begin when reset is called", () => {
-    // expect(wrapper.state("begin")).toEqual(false);
+    expect(wrapper.state("begin")).toEqual(true);
+    wrapper.instance().toggleDisplay()
     wrapper.instance().reset();
     expect(wrapper.state("begin")).toEqual(true)
   })
 
-  it.skip("should update the state of begin and endPractice when newPratice is called", () => {
-    wrapper.instance().endPractice();
+  it("should update the state of begin and endPractice when newPratice is called", () => {
+    wrapper.instance().newPractice();
     expect(wrapper.state("endPractice")).toEqual(false);
     expect(wrapper.state("begin")).toEqual(true)
   })

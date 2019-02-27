@@ -17,21 +17,21 @@ exports[`QuizCard should match snapshot when all data is passed correctly 1`] = 
       id="a1"
       onClick={[Function]}
     >
-      greeting.join()
+      A current element
     </button>
     <button
       className="answer"
       id="a2"
       onClick={[Function]}
     >
-      greeting.concat()
+      None
     </button>
     <button
       className="answer"
       id="a3"
       onClick={[Function]}
     >
-      greeting.join(' ')
+      A callback function
     </button>
   </article>
 </section>

@@ -24,7 +24,8 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch("http://memoize-datasets.herokuapp.com/api/v1/TSquizzes")
+    const url = 'http://memoize-datasets.herokuapp.com/api/v1/TSquizzes';
+    fetch(url)
       .then(response => response.json())
       .then(quizzes => {
         this.setState({
