@@ -8,13 +8,10 @@ StudyUp is a tool for users to practice javascript fundamentals through a series
 
 ### Screenshots
 
-Begin
 <img width="693" alt="begin" src="https://user-images.githubusercontent.com/43555476/53501375-45e31d80-3a69-11e9-9fd7-801112d3dc00.png">
 
-Question
 <img width="693" alt="question" src="https://user-images.githubusercontent.com/43555476/53501378-47ace100-3a69-11e9-848b-ca7b1af7e70b.png">
 
-Message
 <img width="694" alt="correct response" src="https://user-images.githubusercontent.com/43555476/53501382-4976a480-3a69-11e9-8d0f-c89ea5cf3b50.png">
 
 ### Setup
