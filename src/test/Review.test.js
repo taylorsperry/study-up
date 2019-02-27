@@ -27,11 +27,12 @@ describe("Review", () => {
   }];
   let numCorrect = 7;
   let mockFunc = jest.fn();
+  let beginReview = jest.fn();
 
   beforeEach(() => {
     wrapper = shallow(
     <Review 
-        reviewQuizzes={reviewQuizzes}
+        beginReview={beginReview}
         numCorrect={numCorrect}
         reviewLength={reviewQuizzes.length}
         reset={mockFunc}

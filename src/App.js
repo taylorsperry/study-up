@@ -139,7 +139,7 @@ class App extends Component {
     })
   }
 
-  reviewQuizzes = () => {
+  beginReview = () => {
     if(this.state.reviewEnabled === true) {
     let reviewQuizzes = this.state.reviewQuizzes
     this.setState({
@@ -220,7 +220,7 @@ class App extends Component {
           </section>
           <section>
               <Review 
-                reviewQuizzes = {this.reviewQuizzes}
+                beginReview = {this.beginReview}
                 numCorrect = {this.state.numCorrect}
                 reviewLength = {this.state.reviewQuizzes.length}
                 reset = {this.reset}

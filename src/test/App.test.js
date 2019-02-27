@@ -95,7 +95,7 @@ describe("App", () => {
     expect(wrapper.state("currentQuiz.id")).not.toEqual(6)
   })
 
-  it("should update the state of availableQuizzes when reviewQuizzes is called", () => {
+  it("should update the state of availableQuizzes when beginReview is called", () => {
     wrapper.setState({
       availableQuizzes: [{
       "id": 6,
@@ -112,7 +112,7 @@ describe("App", () => {
         "explanation": "Without a separator argument, .join() will return a string with the array’s elements separated by commas; .concat() joins the prototype on which its called with the arguments its passed."
       }]
     });
-    wrapper.instance().reviewQuizzes();
+    wrapper.instance().beginReview();
     expect(wrapper.state("availableQuizzes")).toEqual(wrapper.state("reviewQuizzes"))
   })
 

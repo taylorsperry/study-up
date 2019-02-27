@@ -20,7 +20,11 @@ describe("QuizCard", () => {
   }
   let shuffledAnswers = ["A current element", "None", "A callback function"]
   let mockFunc = jest.fn();
-  
+  let mockEvent = { target: {}};
+  let checkAnswer = jest.fn();
+  let displayCorrect = jest.fn();
+  let displayIncorrect = jest.fn();
+  const keepPracticing = jest.fn();
 
   beforeEach(() => {
     wrapper = shallow(
@@ -32,6 +36,7 @@ describe("QuizCard", () => {
             addToReview={mockFunc}
             updateCorrectNum ={mockFunc}
             shuffledAnswers={shuffledAnswers}
+            keepPracticing={keepPracticing}
         />)
   })
 
@@ -46,17 +51,35 @@ describe("QuizCard", () => {
     })
   })
 
-  it("should call checkAnswer when an answer button is clicked", () => {
-    let spy = jest.spyOn(wrapper.instance(), 'checkAnswer');
-    wrapper.find("#a1").simulate("click");
-    expect(spy).toHaveBeenCalled()
+  it.skip("should call checkAnswer when an answer button is clicked", () => {
+    wrapper.find("#a1").simulate("click", mockEvent);
+    expect(checkAnswer).toHaveBeenCalled()
   })
 
   it.skip("should call displayCorrect if the correct answer is clicked", () => {
-    
+    wrapper.find("#a1").simulate("click", mockEvent);
+    let guess = "greeting.join()";
+    let answer = "greeting.join()";
+    wrapper.find("#a1").simulate("click", mockEvent);
+    expect(checkAnswer).toHaveBeenCalled();
+    expect(displayCorrect).toHaveBeenCalled();
   })
 
   it.skip("should call displayIncorrect if an incorrect answer is clicked", () => {
+    wrapper.find("#a1").simulate("click", mockEvent);
+    let guess = "greeting.join()";
+    let answer = "none";
+    wrapper.find("#a1").simulate("click", mockEvent);
+    expect(displayIncorrect).toHaveBeenCalled();
+    expect(displayCorrect).toHaveBeenCalled();
+  })
 
+  it("should update state when keepPracticing is called", () => {
+    expect(wrapper.state("displayQ")).toEqual(true);
+    expect(wrapper.state("correctGuess")).toEqual(false);
+    wrapper.instance().displayCorrect()
+    wrapper.instance().keepPracticing()
+    expect(wrapper.state("displayQ")).toEqual(true);
+    expect(wrapper.state("correctGuess")).toEqual(false);
   })
 })
